@@ -19,7 +19,7 @@ body{
 .form-box{
     max-width:900px;
     margin:auto;
-    margin-top:30px;
+    margin-top:20px;
     background:white;
     padding:30px;
     border-radius:20px;
@@ -36,13 +36,22 @@ body{
 label{
     font-weight:600;
     margin-bottom:8px;
+    display:block;
+}
+
+.form-control{
+    border-radius:10px;
 }
 
 .submit-buttons{
     display:flex;
     gap:10px;
     flex-wrap:wrap;
-    margin-top:15px;
+    margin-top:20px;
+}
+
+.submit-buttons .btn{
+    min-width:180px;
 }
 
 @media (max-width:768px){
@@ -53,12 +62,12 @@ label{
 
     .form-box{
         padding:20px;
-        margin-top:15px;
+        margin-top:10px;
     }
 
     h2{
-        font-size:24px;
         text-align:center;
+        font-size:24px;
     }
 
     .top-buttons{
@@ -148,6 +157,7 @@ label{
 </div>
 
 <div class="col-md-12 mb-3">
+
 <label>صور الرخصة</label>
 
 <input
@@ -162,13 +172,13 @@ class="form-control">
 
 <div class="submit-buttons">
 
-    <button type="submit" class="btn btn-success">
-        💾 حفظ السيارة
-    </button>
+<button type="submit" class="btn btn-success">
+💾 حفظ السيارة
+</button>
 
-    <a href="/cars/" class="btn btn-secondary">
-        🚗 عرض السيارات
-    </a>
+<a href="/cars/" class="btn btn-secondary">
+🚗 عرض السيارات
+</a>
 
 </div>
 
