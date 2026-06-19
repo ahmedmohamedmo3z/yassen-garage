@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -15,42 +16,29 @@ body{
     background:#f5f7fb;
 }
 
-.sidebar{
-    min-height:100vh;
+.dashboard-container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.header-box{
     background:#212529;
     color:white;
-}
-
-.sidebar a{
-    color:white;
-    text-decoration:none;
-    display:block;
-    padding:12px;
-    border-radius:8px;
-    margin-bottom:5px;
-}
-
-.sidebar a:hover{
-    background:#343a40;
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:25px;
 }
 
 .card-box{
     border:none;
-    border-radius:15px;
+    border-radius:20px;
     box-shadow:0 0 15px rgba(0,0,0,.08);
 }
 
 .number{
-    font-size:32px;
+    font-size:40px;
     font-weight:bold;
-}
-
-.welcome-box{
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    margin-bottom:25px;
-    box-shadow:0 0 15px rgba(0,0,0,.08);
 }
 
 .action-buttons{
@@ -59,21 +47,27 @@ body{
     flex-wrap:wrap;
 }
 
+.action-buttons .btn{
+    min-width:180px;
+}
+
+.stat-card{
+    padding:25px;
+}
+
 @media (max-width:768px){
 
-    .sidebar{
-        min-height:auto;
+    .dashboard-container{
+        padding:10px;
     }
 
-    .welcome-box .d-flex{
-        flex-direction:column;
-        align-items:flex-start !important;
+    .header-box{
+        text-align:center;
     }
 
     .action-buttons{
-        width:100%;
-        margin-top:15px;
         flex-direction:column;
+        margin-top:20px;
     }
 
     .action-buttons .btn{
@@ -81,11 +75,15 @@ body{
     }
 
     .number{
-        font-size:26px;
+        font-size:32px;
     }
 
-    h2{
-        font-size:24px;
+    h1{
+        font-size:28px;
+    }
+
+    .stat-card{
+        text-align:center;
     }
 }
 
@@ -95,61 +93,31 @@ body{
 
 <body>
 
-<div class="container-fluid">
+<div class="dashboard-container">
 
-<div class="row">
+    <div class="header-box">
 
-<div class="col-md-2 sidebar p-3">
+        <h1>🚗 Yassen Garage</h1>
 
-    <h3 class="mb-4">🚗 Yassen Garage</h3>
+        <p class="mb-0">
+            نظام إدارة الجراج
+        </p>
 
-    <a href="/">🏠 Dashboard</a>
+    </div>
 
-    <a href="/add-car/">
-        ➕ إضافة سيارة
-    </a>
+    <div class="action-buttons mb-4">
 
-    <a href="/cars/">
-        🚗 السيارات
-    </a>
+        <a href="/add-car/" class="btn btn-success">
+            ➕ إضافة سيارة
+        </a>
 
-    <a href="/logout/" class="btn btn-danger w-100 mt-3">
-        🚪 تسجيل خروج
-    </a>
+        <a href="/cars/" class="btn btn-primary">
+            🚗 السيارات
+        </a>
 
-</div>
-
-<div class="col-md-10 p-4">
-
-    <div class="welcome-box">
-
-        <div class="d-flex justify-content-between align-items-center">
-
-            <div>
-                <h2>لوحة التحكم</h2>
-
-                <p class="text-muted mb-0">
-                    نظام إدارة الجراج
-                </p>
-            </div>
-
-            <div class="action-buttons">
-
-                <a href="/add-car/" class="btn btn-success">
-                    ➕ إضافة سيارة
-                </a>
-
-                <a href="/cars/" class="btn btn-primary">
-                    🚗 السيارات
-                </a>
-
-                <a href="/logout/" class="btn btn-danger">
-                    🚪 تسجيل خروج
-                </a>
-
-            </div>
-
-        </div>
+        <a href="/logout/" class="btn btn-danger">
+            🚪 تسجيل خروج
+        </a>
 
     </div>
 
@@ -157,9 +125,9 @@ body{
 
         <div class="col-md-6 mb-3">
 
-            <div class="card card-box p-4">
+            <div class="card card-box stat-card">
 
-                <h5>إجمالي السيارات</h5>
+                <h5>🚗 إجمالي السيارات</h5>
 
                 <div class="number text-primary">
                     {{ total_cars }}
@@ -171,9 +139,9 @@ body{
 
         <div class="col-md-6 mb-3">
 
-            <div class="card card-box p-4">
+            <div class="card card-box stat-card">
 
-                <h5>عدد صور الرخص</h5>
+                <h5>📸 عدد صور الرخص</h5>
 
                 <div class="number text-danger">
                     {{ total_images }}
@@ -184,10 +152,6 @@ body{
         </div>
 
     </div>
-
-</div>
-
-</div>
 
 </div>
 
