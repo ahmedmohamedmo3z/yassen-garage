@@ -1,48 +1,97 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yassen Garage 🚗</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
 
-    <style>
-        body{
-            background:#f4f6f9;
-            font-family:Tahoma;
-        }
+body{
+    background:#f4f6f9;
+    font-family:Tahoma;
+}
 
-        .container-box{
-            background:white;
-            padding:30px;
-            border-radius:15px;
-            margin-top:40px;
-            box-shadow:0 0 15px rgba(0,0,0,.1);
-        }
+.container-box{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-top:30px;
+    box-shadow:0 0 15px rgba(0,0,0,.08);
+}
 
-        h1{
-            font-weight:bold;
-            margin-bottom:25px;
-        }
+h1{
+    font-weight:bold;
+}
 
-        .table{
-            vertical-align:middle;
-        }
+.top-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
 
-        .btn-action{
-            margin-left:5px;
-        }
-    </style>
-</head>
+.btn-action{
+    margin:2px;
+}
 
-<body>
+.table-responsive{
+    overflow-x:auto;
+}
 
-<div class="container mt-5">
+.table{
+    min-width:900px;
+    vertical-align:middle;
+}
+
+@media (max-width:768px){
+
+    .container{
+        padding:10px;
+    }
+
+    .container-box{
+        padding:15px;
+        margin-top:15px;
+    }
+
+    h1{
+        font-size:28px;
+        text-align:center;
+        margin-bottom:20px;
+    }
+
+    .top-buttons{
+        flex-direction:column;
+    }
+
+    .top-buttons .btn{
+        width:100%;
+    }
+
+    .table{
+        font-size:13px;
+    }
+
+    .table td,
+    .table th{
+        white-space:nowrap;
+    }
+
+    .input-group{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .input-group .form-control,
+    .input-group .btn{
+        width:100%;
+        border-radius:8px !important;
+    }
+
+}
+
+</style>
+
+<div class="container mt-4">
 
     <div class="container-box">
 
-        <div class="mb-4">
+        <div class="top-buttons">
 
             <a href="/" class="btn btn-dark">
                 🏠 الرئيسية
@@ -62,11 +111,7 @@
 
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
-
-            <h1>🚗 السيارات</h1>
-
-        </div>
+        <h1 class="mb-4">🚗 السيارات</h1>
 
         <form method="GET" class="mb-4">
 
@@ -87,108 +132,97 @@
 
         </form>
 
-        <table class="table table-bordered table-hover text-center">
+        <div class="table-responsive">
 
-            <thead class="table-dark">
+            <table class="table table-bordered table-hover text-center">
 
-                <tr>
-                    <th>الدفع</th>
-                    <th>المالك</th>
-                    <th>الهاتف</th>
-                    <th>نوع السيارة</th>
-                    <th>لون السيارة</th>
-                    <th>رقم اللوحة</th>
-                    <th>عدد الصور</th>
-                    <th>الإجراءات</th>
-                </tr>
+                <thead class="table-dark">
 
-            </thead>
+                    <tr>
+                        <th>الدفع</th>
+                        <th>المالك</th>
+                        <th>الهاتف</th>
+                        <th>نوع السيارة</th>
+                        <th>لون السيارة</th>
+                        <th>رقم اللوحة</th>
+                        <th>عدد الصور</th>
+                        <th>الإجراءات</th>
+                    </tr>
 
-            <tbody>
+                </thead>
+
+                <tbody>
 
                 {% for car in cars %}
 
-                <tr>
+                    <tr>
 
-                    <td>
+                        <td>
 
-                        {% if car.is_paid %}
+                            {% if car.is_paid %}
 
-                        <a href="{% url 'toggle_payment' car.id %}"
-                           class="btn btn-success btn-sm">
+                            <a href="{% url 'toggle_payment' car.id %}"
+                               class="btn btn-success btn-sm">
+                                ✅ مدفوع
+                            </a>
 
-                            ✅ مدفوع
+                            {% else %}
 
-                        </a>
+                            <a href="{% url 'toggle_payment' car.id %}"
+                               class="btn btn-danger btn-sm">
+                                ❌ غير مدفوع
+                            </a>
 
-                        {% else %}
+                            {% endif %}
 
-                        <a href="{% url 'toggle_payment' car.id %}"
-                           class="btn btn-danger btn-sm">
+                        </td>
 
-                            ❌ غير مدفوع
+                        <td>{{ car.owner_name }}</td>
+                        <td>{{ car.phone }}</td>
+                        <td>{{ car.car_type }}</td>
+                        <td>{{ car.car_color }}</td>
+                        <td>{{ car.plate_number }}</td>
+                        <td>{{ car.license_images.count }}</td>
 
-                        </a>
+                        <td>
 
-                        {% endif %}
+                            <a href="{% url 'car_images' car.id %}"
+                               class="btn btn-info btn-sm btn-action">
+                                الرخص
+                            </a>
 
-                    </td>
+                            <a href="{% url 'edit_car' car.id %}"
+                               class="btn btn-warning btn-sm btn-action">
+                                تعديل
+                            </a>
 
-                    <td>{{ car.owner_name }}</td>
+                            <a href="{% url 'delete_car' car.id %}"
+                               class="btn btn-danger btn-sm btn-action"
+                               onclick="return confirm('هل تريد حذف السيارة؟')">
+                                حذف
+                            </a>
 
-                    <td>{{ car.phone }}</td>
+                        </td>
 
-                    <td>{{ car.car_type }}</td>
-
-                    <td>{{ car.car_color }}</td>
-
-                    <td>{{ car.plate_number }}</td>
-
-                    <td>
-                        {{ car.license_images.count }}
-                    </td>
-
-                    <td>
-
-                        <a href="{% url 'car_images' car.id %}"
-                           class="btn btn-info btn-sm">
-                            الرخص
-                        </a>
-
-                        <a href="{% url 'edit_car' car.id %}"
-                           class="btn btn-warning btn-sm btn-action">
-                            تعديل
-                        </a>
-
-                        <a href="{% url 'delete_car' car.id %}"
-                           class="btn btn-danger btn-sm"
-                           onclick="return confirm('هل تريد حذف السيارة؟')">
-                            حذف
-                        </a>
-
-                    </td>
-
-                </tr>
+                    </tr>
 
                 {% empty %}
 
-                <tr>
-
-                    <td colspan="8">
-                        لا توجد سيارات مسجلة
-                    </td>
-
-                </tr>
+                    <tr>
+                        <td colspan="8">
+                            لا توجد سيارات مسجلة
+                        </td>
+                    </tr>
 
                 {% endfor %}
 
-            </tbody>
+                </tbody>
 
-        </table>
+            </table>
+
+        </div>
 
     </div>
 
 </div>
 
-</body>
-</html>
