@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,6 +53,42 @@ body{
     box-shadow:0 0 15px rgba(0,0,0,.08);
 }
 
+.action-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+@media (max-width:768px){
+
+    .sidebar{
+        min-height:auto;
+    }
+
+    .welcome-box .d-flex{
+        flex-direction:column;
+        align-items:flex-start !important;
+    }
+
+    .action-buttons{
+        width:100%;
+        margin-top:15px;
+        flex-direction:column;
+    }
+
+    .action-buttons .btn{
+        width:100%;
+    }
+
+    .number{
+        font-size:26px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+}
+
 </style>
 
 </head>
@@ -65,19 +101,19 @@ body{
 
 <div class="col-md-2 sidebar p-3">
 
-    <h3 class="mb-4">Yassen Garage 🚗</h3>
+    <h3 class="mb-4">🚗 Yassen Garage</h3>
 
-    <a href="/">Dashboard</a>
+    <a href="/">🏠 Dashboard</a>
 
     <a href="/add-car/">
-        إضافة سيارة
+        ➕ إضافة سيارة
     </a>
 
     <a href="/cars/">
-        السيارات
+        🚗 السيارات
     </a>
 
-    <a href="/logout/" class="btn btn-danger mt-3">
+    <a href="/logout/" class="btn btn-danger w-100 mt-3">
         🚪 تسجيل خروج
     </a>
 
@@ -97,7 +133,7 @@ body{
                 </p>
             </div>
 
-            <div>
+            <div class="action-buttons">
 
                 <a href="/add-car/" class="btn btn-success">
                     ➕ إضافة سيارة
