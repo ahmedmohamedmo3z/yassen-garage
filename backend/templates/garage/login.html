@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,16 +14,72 @@
 
 body{
     background:#f4f6f9;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
 }
 
 .login-box{
-    width:450px;
-    margin:auto;
-    margin-top:120px;
-    background:white;
+    width:100%;
+    max-width:450px;
+    background:#fff;
     padding:35px;
     border-radius:15px;
     box-shadow:0 0 20px rgba(0,0,0,.1);
+}
+
+.login-box h2{
+    font-size:2rem;
+    font-weight:bold;
+}
+
+.form-control{
+    height:50px;
+    border-radius:10px;
+}
+
+.btn{
+    height:50px;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+@media (max-width:768px){
+
+    .login-box{
+        padding:25px;
+        border-radius:12px;
+    }
+
+    .login-box h2{
+        font-size:1.6rem;
+    }
+
+    .form-control{
+        height:48px;
+        font-size:16px;
+    }
+
+    .btn{
+        height:48px;
+        font-size:16px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .login-box{
+        padding:20px;
+    }
+
+    .login-box h2{
+        font-size:1.4rem;
+    }
+
 }
 
 </style>
@@ -42,19 +99,23 @@ body{
         {% csrf_token %}
 
         <div class="mb-3">
-            <label>اسم المستخدم</label>
+            <label class="form-label">اسم المستخدم</label>
             <input
                 type="text"
                 name="username"
-                class="form-control">
+                class="form-control"
+                placeholder="أدخل اسم المستخدم"
+                required>
         </div>
 
         <div class="mb-3">
-            <label>كلمة المرور</label>
+            <label class="form-label">كلمة المرور</label>
             <input
                 type="password"
                 name="password"
-                class="form-control">
+                class="form-control"
+                placeholder="أدخل كلمة المرور"
+                required>
         </div>
 
         <button
