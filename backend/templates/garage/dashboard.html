@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Yassen Garage 🚗</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+    background:#f5f7fb;
+}
+
+.sidebar{
+    min-height:100vh;
+    background:#212529;
+    color:white;
+}
+
+.sidebar a{
+    color:white;
+    text-decoration:none;
+    display:block;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:5px;
+}
+
+.sidebar a:hover{
+    background:#343a40;
+}
+
+.card-box{
+    border:none;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,.08);
+}
+
+.number{
+    font-size:32px;
+    font-weight:bold;
+}
+
+.welcome-box{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    box-shadow:0 0 15px rgba(0,0,0,.08);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+
+<div class="row">
+
+<div class="col-md-2 sidebar p-3">
+
+    <h3 class="mb-4">Yassen Garage 🚗</h3>
+
+    <a href="/">Dashboard</a>
+
+    <a href="/add-car/">
+        إضافة سيارة
+    </a>
+
+    <a href="/cars/">
+        السيارات
+    </a>
+
+    <a href="/logout/" class="btn btn-danger mt-3">
+        🚪 تسجيل خروج
+    </a>
+
+</div>
+
+<div class="col-md-10 p-4">
+
+    <div class="welcome-box">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+                <h2>لوحة التحكم</h2>
+
+                <p class="text-muted mb-0">
+                    نظام إدارة الجراج
+                </p>
+            </div>
+
+            <div>
+
+                <a href="/add-car/" class="btn btn-success">
+                    ➕ إضافة سيارة
+                </a>
+
+                <a href="/cars/" class="btn btn-primary">
+                    🚗 السيارات
+                </a>
+
+                <a href="/logout/" class="btn btn-danger">
+                    🚪 تسجيل خروج
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+
+            <div class="card card-box p-4">
+
+                <h5>إجمالي السيارات</h5>
+
+                <div class="number text-primary">
+                    {{ total_cars }}
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <div class="card card-box p-4">
+
+                <h5>عدد صور الرخص</h5>
+
+                <div class="number text-danger">
+                    {{ total_images }}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
