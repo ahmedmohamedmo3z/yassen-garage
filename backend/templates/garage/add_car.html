@@ -1,6 +1,5 @@
-```html
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
@@ -20,11 +19,64 @@ body{
 .form-box{
     max-width:900px;
     margin:auto;
-    margin-top:40px;
+    margin-top:30px;
     background:white;
     padding:30px;
     border-radius:20px;
     box-shadow:0 0 20px rgba(0,0,0,.08);
+}
+
+.top-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+label{
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.submit-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+@media (max-width:768px){
+
+    .container{
+        padding:10px;
+    }
+
+    .form-box{
+        padding:20px;
+        margin-top:15px;
+    }
+
+    h2{
+        font-size:24px;
+        text-align:center;
+    }
+
+    .top-buttons{
+        flex-direction:column;
+    }
+
+    .top-buttons .btn{
+        width:100%;
+    }
+
+    .submit-buttons{
+        flex-direction:column;
+    }
+
+    .submit-buttons .btn{
+        width:100%;
+    }
+
 }
 
 </style>
@@ -37,7 +89,7 @@ body{
 
 <div class="form-box">
 
-<div class="mb-4">
+<div class="top-buttons">
 
     <a href="/" class="btn btn-dark">
         🏠 الرئيسية
@@ -97,22 +149,28 @@ body{
 
 <div class="col-md-12 mb-3">
 <label>صور الرخصة</label>
+
 <input
 type="file"
 name="license_images"
 multiple
 class="form-control">
-</div>
 
 </div>
 
-<button type="submit" class="btn btn-success">
-    💾 حفظ السيارة
-</button>
+</div>
 
-<a href="/cars/" class="btn btn-secondary">
-    عرض السيارات
-</a>
+<div class="submit-buttons">
+
+    <button type="submit" class="btn btn-success">
+        💾 حفظ السيارة
+    </button>
+
+    <a href="/cars/" class="btn btn-secondary">
+        🚗 عرض السيارات
+    </a>
+
+</div>
 
 </form>
 
@@ -122,4 +180,4 @@ class="form-control">
 
 </body>
 </html>
-```
+
